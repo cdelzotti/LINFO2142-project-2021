@@ -1,4 +1,5 @@
 before_install:
+	- apt-get install enchant
 install: "pip3 install -q -r .travis-requirements.txt"
 language: python
 python:
