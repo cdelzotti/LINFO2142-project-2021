@@ -8,3 +8,5 @@ set -e
 #  -T   output full traceback
 # --keep-going continue the processing after a warning
 sphinx-build  -WNT --keep-going -b html . /tmp
+# spell checking
+sphinx-build -b spelling . /tmp 
