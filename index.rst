@@ -10,7 +10,7 @@ Welcome to LINFO2142 2021-2022 project
    :maxdepth: 2
    :caption: Contents:
 
-   example	     
+   tstat/project
 
 
 Indices and tables
