@@ -8,7 +8,7 @@ A first and simple usecase to explore is a simple bitrate monitoring. To do so, 
 
     tstat -r RRD -R rrd.conf -N net.conf -l
 
-Tstat can work both with packets traces and live traffic through the libpcap library. Live monitoring is launched with the *-l* flag. To analyse a trace instead, simply replace the *-l* flag by the path to the trace.
+Tstat can work both with packets traces and live traffic through the libpcap library. Live monitoring is launched with the *-l* flag. To analyse a trace instead, simply replace the *-l* flag with the path to the trace.
 
 Now, let's analyze the remaining of the command to understand what is really going on under the hood :
 
