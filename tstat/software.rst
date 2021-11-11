@@ -1,5 +1,6 @@
 Configuration
------
+=============
+.. sectionauthor:: Clément Delzotti, Vincent Higginson
 
 Hardware
 ~~~~~

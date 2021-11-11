@@ -1,5 +1,6 @@
 Basic monitoring
------------
+================
+.. sectionauthor:: Clément Delzotti, Vincent Higginson
 
 A first and simple usecase to explore is a simple bitrate monitoring. To do so, we first need to launch a live capture with *tstat* :
 
