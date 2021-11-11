@@ -11,11 +11,3 @@ Welcome to LINFO2142 2021-2022 project
    :caption: Contents:
 
    tstat/project
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
