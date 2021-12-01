@@ -25,8 +25,14 @@ One of the first things we have analyzed is the behavior of TCP. We can see that
 
 Most of the TCP traffic is going well, with the exception of some *Retransmission RTO*, that are probably caused by the fact that the router is located behind a thick wall through Wifi.
 
-Another point of interest in our moniroting is traffic classification. As explained before, TLS traffic possesses a *SNI* field, which is used to identify the destination server. We can thus use this field to identify where a TLS connection is going. Tstat allows us to do so, with a list of 10 predefined services (e.g. Facebook, Google, Instagram, etc). We modified Tstat to also catch traffic that matches our particular case (As our router is located within a UCLouvain building accessed by students in computer sciences, we can foresee some network utiliation) :
+Another point of interest in our moniroting is traffic classification. As explained before, TLS traffic possesses a *SNI* field, which is used to identify the destination server. We can thus use this field to identify where a TLS connection is going. Tstat allows us to do so, with a list of 10 predefined services (e.g. Facebook, Google, Instagram, etc). We modified Tstat to also catch traffic that matches our particular case (As our router is located within a UCLouvain building accessed by students in computer sciences, we can foresee some network utilization such as *Stack Overflow* or *GitHub*) :
 
-# TODO : add a graph of TLS traffic Monitoring
+.. figure:: img/tlsdl.png
+   :width: 350
+   :align: center
 
-This allows us to see that SNI-based network classification is possible and that we can identify the destination server. Of course, the part of *unknown traffic* is important here as a simple set of 13 services is not enough to identify all the traffic. Once again, it is important to mention that this technique could be threatened by the emergence of ESNI.
+   Network traffic classification based on the SNI field.
+
+This allows us to see that SNI-based network classification is possible and that we can identify the destination servers. Of course, the part of *unknown traffic* is important here as a simple set of 13 services is not enough to identify all the traffic. Once again, it is important to mention that this technique could be threatened by the emergence of ESNI.
+
+Finally, we realized some monitoring of the CPU utilization, to understand the feasibility of our monitoring and if it could be used on a wide scale. Based on our observations, our monitoring had little impact on the router performances.
