@@ -5,7 +5,11 @@ Configuration
 Hardware
 ~~~~~
 
-For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage of this is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compile data afterwards. We mainly used this router to run *tstat* and *rrdtool*.
+For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage of this is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compile data afterwards. We mainly used this router to run *tstat* [1]_ and *rrdtool* [2]_ .
+
+.. [1] https://tstat.polito.it/software.php
+
+.. [2] https://github.com/oetiker/rrdtool-1.x
 
 Round Robin Databases
 ~~~~
