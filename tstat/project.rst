@@ -10,4 +10,5 @@ Passive Monitoring With TSTAT
    trafficClassification
    qoe
    youtube
+   starlink
    source
