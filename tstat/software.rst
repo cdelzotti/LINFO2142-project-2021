@@ -5,7 +5,7 @@ Configuration
 Hardware
 ~~~~~
 
-For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage of this is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compile data afterwards. We mainly used this router to run *tstat* [1]_ and *rrdtool* [2]_ .
+For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compiling data afterwards. This router was mainly used to run *tstat* [1]_ and *rrdtool* [2]_.
 
 .. [1] https://tstat.polito.it/software.php
 
@@ -14,7 +14,7 @@ For this project, we had at our disposal a Turris Router. This router allows con
 Round Robin Databases
 ~~~~
 
-RRDs are a central element in this project. They attempt to answer an important problem of networking monitoring : storage. The total amount of data going through a router can be important and routers usually have limited storage. The idea of a Round Robin Database is to keep a constant memory use despite continuous monitoring. To do so, it aggregates older data to make rooms for freshly performed measurements. The further the monitoring goes, the more old data are aggregated. The counterpart is of course a lack of precise information for older measures. This can be avoided with automatic plotting using tools such as `crontab` and `rrdtool`.
+RRDs are a central element in this project. They attempt to answer an important problem of networking monitoring: storage. The total amount of data going through a router can be important and routers usually have limited storage. The idea of a Round Robin Database is to keep a constant memory use despite continuous monitoring. To do so, a RRD aggregates older data to make rooms for freshly performed measurements. The further the monitoring goes, the more old data are aggregated. The counterpart is a lack of precise information for older measures. This can be avoided with automatic plotting and data back-up using tools such as `crontab` and `rrdtool`.
 
 RRDs are thus usually lightweight and can be transferred easily. However, it is worth saying that RRDs are OS and architecture specific. To use RRDs captured from a router (Typically running Linux on ARM) to a personal computer (Typically running over an x86_64 architecture), some conversion must be performed with the help of `rrdtool dump`.
 
@@ -23,7 +23,7 @@ Tstat
 
 Tstat is a monitoring software developed by the *Politecnico di Torino* that turned out to be really useful due to its integrated logic in traffic monitoring. It can, among many other things, read DNS requests and therefore identify where a particular flow is going. It then produces logs in standard text formats that can be parsed to get information about monitored traffic. Another helpful functionality is the ability to export monitored data in Round Robin Databases who can be used for plotting.
 
-The first issue we had was the compilation. As the Turris Router is running a modified version of OpenWRT (A Linux distribution designed for routers) on an armv7l architecture, it was somehow complicated to find dependencies needed by Tstat who weren't available in OPKG (OpenWRT package manager). The solution we found was to use LXC containers to run a Debian distribution with a much more supplied package manager, enabling an easy compilation of Tstat. But this led to another minor problem : LXC networks. LXC containers embeds by default a networking stack enabling communications between containers. This was an obstacle because we needed to monitor the WAN port of our Router, and it was therefore inaccessible from inside our container. We worked around it by enabling "host" networking for our container in its configuration file :
+The first issue encountered while deploying tools was the compilation. As the Turris Router is running a modified version of OpenWRT (A Linux distribution designed for routers) on an armv7l architecture with an alternative libc called musl, it was somehow complicated to find and compile dependencies needed by Tstat who weren't available in OPKG (OpenWRT package manager) as compiled binaries. The solution we found was to use LXC containers to run a Debian distribution with a much more supplied package manager and a more common libc, enabling an easy compilation of Tstat. But this led to another minor problem : LXC networks. LXC containers embeds by default a networking stack enabling communications between containers. This was an obstacle because we needed to monitor the WAN port of our Router, and it was therefore inaccessible from inside our container. We worked around it by enabling "host" networking for our container in its configuration file :
 
 .. code-block:: ruby
    :linenos:
