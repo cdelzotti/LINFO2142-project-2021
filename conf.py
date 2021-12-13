@@ -21,7 +21,7 @@
 
 project = 'LINFO2142 - 2021-2022 projects'
 copyright = '2021, LINFO2142 students'
-author = 'LINFO2142 students'
+author = 'Clément Delzotti\nVincent Higginson'
 
 # The short X.Y version
 version = ''

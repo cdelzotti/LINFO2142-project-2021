@@ -8,4 +8,7 @@ Sources
 - [4] *Improving SNI-based HTTPS Security Monitoring*, Wazen M. Shbair, Thibault Cholez, Jérome François, Isabelle Chrisment.
 - [5] *Dissecting the performance of YouTube video streaming in mobile network*: https://www.researchgate.net/profile/Ozgu-Alay/publication/330228021_Dissecting_the_performance_of_YouTube_video_streaming_in_mobile_networks/links/5c9f6ca692851cf0aea1adbb/Dissecting-the-performance-of-YouTube-video-streaming-in-mobile-networks.pdf
 - [6] *Quality of Experience for Streaming Services: Measurements, Challenges and Insights*: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8954623
-- [7] *Packet Dropping For H.264 Videos Considering Both Coding And Packet-Loss Artifacts*: https://escholarship.org/content/qt77t6z812/qt77t6z812.pdf 
+- [7] *Packet Dropping For H.264 Videos Considering Both Coding And Packet-Loss Artifacts*: https://escholarship.org/content/qt77t6z812/qt77t6z812.pdf
+- [8] *On the Importance of Encrypted-SNI (ESNI) to Censorship Circumvention* : https://www.usenix.org/system/files/foci19-paper_chai_0.pdf
+- [9] *Tstat* : https://tstat.polito.it/software.php
+- [10] *RRDTool* :  https://github.com/oetiker/rrdtool-1.x

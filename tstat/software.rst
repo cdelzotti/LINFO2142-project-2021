@@ -5,11 +5,10 @@ Configuration
 Hardware
 ~~~~~
 
-For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compiling data afterwards. This router was mainly used to run *tstat* [1]_ and *rrdtool* [2]_.
+For this project, we had at our disposal a Turris Router. This router allows connections through SSH in order to run software on it. The main advantage is the reduced cost of monitoring, as we can observe traffic on router directly instead of monitoring each computer and compiling data afterwards. This router was mainly used to run *tstat* [c]_ and *rrdtool* [d]_ .
 
-.. [1] https://tstat.polito.it/software.php
-
-.. [2] https://github.com/oetiker/rrdtool-1.x
+.. [c] *Tstat* : https://tstat.polito.it/software.php
+.. [d] *RRDTool* : https://oss.oetiker.ch/rrdtool/
 
 Round Robin Databases
 ~~~~
@@ -21,9 +20,13 @@ RRDs are thus usually lightweight and can be transferred easily. However, it is 
 Tstat
 ~~~~~
 
-Tstat is a monitoring software developed by the *Politecnico di Torino* that turned out to be really useful due to its integrated logic in traffic monitoring. It can, among many other things, read DNS requests and therefore identify where a particular flow is going. It then produces logs in standard text formats that can be parsed to get information about monitored traffic. Another helpful functionality is the ability to export monitored data in Round Robin Databases who can be used for plotting.
+Tstat is a monitoring software developed by the *Politecnico di Torino* that turned out to be really useful due to its integrated logic in traffic monitoring [e]_ . It can, among many other things, read DNS requests and therefore identify where a particular flow is going. It then produces logs in standard text formats that can be parsed to get information about monitored traffic. Another helpful functionality is the ability to export monitored data in Round Robin Databases who can be used for plotting.
 
-The first issue encountered while deploying tools was the compilation. As the Turris Router is running a modified version of OpenWRT (A Linux distribution designed for routers) on an armv7l architecture with an alternative libc called musl, it was somehow complicated to find and compile dependencies needed by Tstat who weren't available in OPKG (OpenWRT package manager) as compiled binaries. The solution we found was to use LXC containers to run a Debian distribution with a much more supplied package manager and a more common libc, enabling an easy compilation of Tstat. But this led to another minor problem : LXC networks. LXC containers embeds by default a networking stack enabling communications between containers. This was an obstacle because we needed to monitor the WAN port of our Router, and it was therefore inaccessible from inside our container. We worked around it by enabling "host" networking for our container in its configuration file :
+The first issue encountered while deploying tools was the compilation. As the Turris Router is running a modified version of OpenWRT (A Linux distribution designed for routers) on an armv7l architecture with an alternative libc called musl, it was somehow complicated to find and compile dependencies needed by Tstat who weren't available in OPKG (OpenWRT package manager) as compiled binaries. The solution we found was to use LXC containers [1]_ to run a Debian distribution with a much more supplied package manager and a more common libc, enabling an easy compilation of Tstat. But this led to another minor problem : LXC networks. LXC containers embeds by default a networking stack enabling communications between containers. This was an obstacle because we needed to monitor the WAN port of our Router, and it was therefore inaccessible from inside our container. We worked around it by enabling "host" networking for our container in its configuration file :
+
+.. [1] https://openwrt.org/docs/guide-user/virtualization/lxc
+.. [e] Finamore, Alessandro, et al. "Experiences of Internet traffic monitoring with tstat." IEEE Network, vol. 25, no. 3, 23 May. 2011, pp. 8-14, doi:10.1109/MNET.2011.5772055.
+
 
 .. code-block:: ruby
    :linenos:
