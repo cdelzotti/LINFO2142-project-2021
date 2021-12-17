@@ -37,7 +37,11 @@ Another point of interest in our monitoring is traffic classification. As explai
 
 This allows us to see that SNI-based network classification is possible and that we can identify the destination servers. Of course, the part of *unknown traffic* is important here as a simple set of 13 services is not enough to identify all the traffic. Once again, it is important to mention that this technique could be threatened by the emergence of ESNI.
 
-Finally, we realized some monitoring of the CPU utilization, to understand the feasibility of our monitoring and if it could be used on a wide scale. Based on our observations, our monitoring had little impact on the router performance.
+Finally, we realized some monitoring of the CPU utilization, to understand the feasibility of our monitoring and if it could be used on a wide scale. Based on our observations, our monitoring had little impact on the router performance. We can see regular spikes in CPU utilization, but they don't always match a high number of flows, which is intriguing. This is probably due to some tests performed by other groups on the same router.
+
+.. figure:: img/cpu.png
+   :width: 350
+   :align: center
 
 Sustainability
 --------------
